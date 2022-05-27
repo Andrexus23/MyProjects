@@ -1,0 +1,48 @@
+[
+  {
+  "id": "1",
+  "author": "Есенин С.А.",
+  "date": "15-07-2021",
+  "title":"Стихотворения и поэмы",
+    "isAvailable": "+",
+    "reader": "-",
+    "returnDate": "-"
+  },
+  {
+    "id": "2",
+    "author": "Есенин С.А.",
+    "date": "15-07-2020",
+    "title":"Стихи",
+    "isAvailable": "+",
+    "reader": "-",
+    "returnDate": "-"
+  },
+  {
+    "id": "3",
+    "author": "Джон Р. Р. Толкин",
+    "date": "15-07-2020",
+    "title":"Властелин колец",
+    "isAvailable": "+",
+    "reader": "-",
+    "returnDate": "-"
+  },
+  {
+    "id": "4",
+    "author": "Джоан Роулинг",
+    "date": "15-07-1968",
+    "title":"Гарри Поттер и Кубок огня",
+    "isAvailable": "+",
+    "reader": "-",
+    "returnDate": "-"
+  },
+  {
+    "id": "5",
+    "author": "Харпер Ли",
+    "date": "15-07-1952",
+    "title":"Убить пересмешника",
+    "isAvailable": "+",
+    "reader": "-",
+    "returnDate": "-"
+  }
+
+]

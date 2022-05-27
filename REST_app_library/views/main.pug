@@ -1,0 +1,77 @@
+html
+
+    head
+        meta(charset="utf-8")
+        link(rel='stylesheet', href='../public/stylesheets/w3.css')
+        script(src = "../public/jss/ajax.js")
+        div(class="w3-container w3-top-middle")
+            h2= title
+    body
+
+        -var last;
+        div(class="w3-container w3-left")
+
+            table(class="w3-table w3-bordered")
+                tr(class="w3-blue" )
+                    th id
+                    th name
+                    th author
+                    th release year
+                    th availability
+                    th return date
+                    th action
+                for i in books
+                    tr( id = i.id )
+                        th
+                            a(href = "lib/" + i.id) #{i.id}
+                        th #{i.title}
+                        th #{i.author}
+                        th #{i.date}
+                        th #{i.isAvailable}
+                        th #{i.returnDate}
+                        td
+                            div(class="w3-left")
+                                form(action="lib/delete/"+ i.id method ="POST")
+                                    button(class ="w3-button w3-blue w3-block" ) delete
+                        - last = i.id;
+            p
+            p
+            p
+
+            div(id= "id02" class="w3-modal w3-modal-content")
+                header(class="w3-container w3-blue")
+                    span(class="w3-button w3-small w3-display-topright" onclick="document.getElementById('id02').style.display='none'") &times;
+                table(class="w3-table w3-bordered")
+                    tr(class="w3-blue")
+                        th
+                        th name
+                        th author
+                        th release year
+                        th
+                        th
+                        th action
+                        form(action="/lib/new/" + (parseInt(last)+1).toString()  method="POST")
+                            tr(class="w3-small")
+                                th
+                                th
+                                    input(required name="title" )
+                                th
+                                    input(required name="author" )
+                                th
+                                    input(required type="date" name="releaseDate" )
+                                th
+                                th
+                                th
+                                    button(class="w3-button w3-light-blue w3-block" type="submit") create
+
+        div(class="w3-container w3-right w3-white")
+            button(class="w3-button w3-blue  w3-block" onclick='showAll(this)' id="showAll") show all
+            p
+            button(class="w3-button w3-blue  w3-block" onclick='showAvailable(this)' id="showAvailable") show available
+            p
+            button(class="w3-button w3-blue  w3-block" onclick='showTaken(this)' id="showTaken") show taken
+            p
+            button(class="w3-button w3-blue  w3-block" onclick='showExpired(this)' id="showExpired") show expired
+            p
+            button(class="w3-button w3-light-blue w3-block" onclick="document.getElementById('id02').style.display='block'") new
+

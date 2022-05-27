@@ -1,0 +1,90 @@
+html
+    head
+        meta(charset="utf-8")
+        div(class="w3-container")
+        link(rel='stylesheet', href='../public/stylesheets/w3.css')
+    body
+    block content
+        div(class="w3-container w3-top-middle")
+            table(class="w3-table w3-bordered")
+                tr(class="w3-blue")
+                    th id
+                    th title
+                    th author
+                    th date
+                    th availability
+                    th reader
+                    th return date
+                tr(class="w3-small")
+                    th #{id}
+                    th #{title}
+                    th #{author}
+                    th #{date}
+                    th #{isAvailable}
+                    th #{reader}
+                    th #{returnDate}
+                    -var bookId = id
+            div(class="w3-container w3-right")
+                    if (isAvailable === "+")
+                        button(class="w3-button w3-light-blue w3-block" onclick="document.getElementById('id01').style.display='block'") Take the book
+
+                        div(id="id01" class="w3-modal")
+                            div(class="w3-modal-content")
+                                form(action="/lib/read/" + bookId method="POST" class="w3-left w3-block w3-container")
+                                    span(onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-right") &times
+                                    input(required name="reader")
+                                    p Reader name
+                                    p
+                                    input(required name="date" type="date")
+                                    p Return date
+                                    p
+                                    button(class="w3-button w3-light-blue" type="submit") Get it
+                    else
+                        button(class="w3-button w3-blue" disabled) Take the book
+                    p
+                    if(isAvailable === "+")
+                        button(class="w3-button w3-light-blue w3-block" disabled) Return the book
+                    else
+                        form(action="/lib/return/" + bookId method="POST")
+                            button(class="w3-button w3-light-blue w3-block" type="submit") Return the book
+                    p
+                    button(class="w3-button w3-light-blue w3-block" onclick="document.getElementById('id04').style.display='block'") edit
+                    p
+                        form(action="/lib" method="GET")
+                            button(class="w3-button w3-light-blue w3-block" type="submit") back
+                    p
+                    button(class="w3-button w3-light-blue w3-block" onclick="document.getElementById('id06').style.display='block'") about reader
+
+
+                    div(id="id04" class="w3-modal")
+                        div(class="w3-modal-content")
+                            form(action="/lib/edit/" + bookId method="POST" class="w3-left w3-block w3-container")
+                                span(onclick="document.getElementById('id04').style.display='none'" class="w3-button w3-right") &times
+                                input(required name="title" value=title)
+                                p title
+                                input(required name="author" value=author)
+                                p author
+                                input(required name="date" value=date)
+                                p date
+                                input(required name="isAvailable" value=isAvailable)
+                                p availability
+                                input(required name="reader" value=reader)
+                                p reader
+                                input(required name="returnDate" value=returnDate)
+                                p return deadline
+                                button(class="w3-button w3-light-blue w3-block" type="submit") Save changes
+
+                    div(id="id06" class="w3-modal")
+                        div(class="w3-modal-content w3-middle")
+                            span(onclick="document.getElementById('id06').style.display='none'" class="w3-button w3-right") &times
+                                if reader === "-"
+                                    p No reader yet
+                                else
+                                    p Reader: #{reader}
+
+
+
+
+
+
+
