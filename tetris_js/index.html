@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Игра Tetris</title>
+    <script type="text/javascript" src="./index.js"></script>
+ </head>
+ <body id="body" onload="setName()">
+ Tetris game
+ <form action="main.html" method="get">
+     <label>
+         Input name:<br>
+         <input id="input" placeholder="name"><br>
+         <!-- каждый необходимый нам элемент имеет id
+         для возможности взаимодействия с ним
+         из других файлов проекта -->
+    </label>
+    <input id="button" type="button" value="Input" onclick="store()">
+</form>
+</body>
+</html>

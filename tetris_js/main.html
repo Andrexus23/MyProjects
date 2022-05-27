@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="index.css" type="text/css"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tetris by Matveev 9381</title>
+    <style type="text/css">
+
+        h1{
+            font-size: 30px;
+            text-align: center;
+            line-height: 1;
+        }
+        h2{
+            font-size: 20px;
+            line-height: 1;
+        }
+        p{
+            font-size: 14px;
+            line-height: 1;
+        }
+
+        #root{
+            width: 90%;
+        }
+
+        #panel_div{
+            float: left;
+            min-width: 300px;
+            width: 30%;
+        }
+
+        #canvas_div{
+            float: left;
+            width: 25%;
+            min-width: 250px;
+        }
+
+        #table_div{
+            float: right;
+            min-width: 250px;
+            width: 20%;
+        }
+    </style>
+</head>
+<body>
+
+
+<div id="root">
+    <h1 align="center">Tetris game</h1>
+    <div id="panel_div">
+        <!--<h2 class="info" id="name">Player: </h2>
+        <p class="info" id="level">Level: </p>
+        <p class="info" id="score">Score: </p>
+        <p class="info" id="lines">Lines: </p>
+        <label>
+            <p>Next: </p>
+            <canvas id="left_canvas" width=100px height=100px></canvas>
+        </label>
+        <p>Arrows for control</p>
+        <p>Left Arrow - Move the shape to the left</p>
+        <p>Right Arrow - Move the shape to the right</p>
+        <p>Down Arrow - Drop a shape</p>
+        <p>Up Arrow - Rotate Shape</p> -->
+        <canvas id="panel" width="300" height="400"></canvas>
+    </div>
+
+    <!--<div id="canvas_div">
+        <div id="canvas_field" width="320" height="640"></div>
+    </div>-->
+
+    <div id="table_div">
+        <div id="table"></div>
+        <button id="button" onclick="window.location='index.html'">На стартовую страницу</button>
+    </div>
+    <div id="canvas_div">
+        <canvas id="field_canvas" width="250" height="500"></canvas>
+    </div>
+</div>
+<script src="main.js" type="module"></script>
+<script src="index.js" type="module"></script>
+<script src="./src/view.js" type="module"></script>
+<script src="./src/GameController.js" type="module"></script>
+<script src="./src/game.js" type="module"></script>
+</body>
+</html>
