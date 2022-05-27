@@ -1,0 +1,22 @@
+doctype html
+html
+    head
+        link(href="/css/style.css" rel="stylesheet" type="text/css")
+    body
+        div(id="table")
+            h1
+                | Таблица рекордов
+            table(id="tableRecords")
+                thead
+                    tr
+                        th
+                            | Имя
+                        th
+                            | Количество очков
+                for pair in pairs
+                    tr
+                        td #{pair[0]}
+                        td #{pair[1]}
+            button(onclick="window.location.href = '/'") Начать заново
+            // это свойство, которое сообщает вам текущий URL-адрес браузера .
+            // Изменение значения свойства приведет к перенаправлению страницы.

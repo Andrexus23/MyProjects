@@ -1,0 +1,35 @@
+doctype html
+html
+    head
+        link(href="/css/style.css" rel="stylesheet" type="text/css")
+        title cw
+    body
+        div(id="intro")
+            h2 Игра танки
+            button(onclick="start();") Играть
+        div(id="gameBlock" style="display:none")
+            div(id="gameInfoBlock")
+                div(id="gameInfo")
+            div(id="canvasBlock")
+                div(id="hud")
+                    span Текущий счёт:&nbsp;
+                    span(id="score") 0
+                    br
+                    span Количество жизней:&nbsp;
+                    span(id="hp") 0
+
+                canvas( id="canvasId"  style="border: 1px solid black;"  width= 672 height=352)
+        script(src="/javascripts/init.js")
+        script(src="/javascripts/gameManager.js")
+        script(src="/javascripts/mapManager.js")
+        script(src="/javascripts/spriteManager.js")
+        script(src="/javascripts/eventsManager.js")
+        script(src='/javascripts/physicsManager.js')
+        script(src="/javascripts/Entities/Entity.js")
+        script(src="/javascripts/Entities/Player.js")
+        script(src="/javascripts/Entities/Bullet.js")
+        script(src="/javascripts/Entities/Enemy.js")
+        script(src="/javascripts/Entities/Bonus.js")
+        script(src="/javascripts/Entities/Mine.js")
+        script(src="/javascripts/soundManager.js")
+
