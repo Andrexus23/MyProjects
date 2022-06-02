@@ -24,9 +24,9 @@ let result1 = courses.filter(element => requiredRanges(element, requiredRange1))
 let result2 = courses.filter(element => requiredRanges(element, requiredRange2));
 let result3 = courses.filter(element => requiredRanges(element, requiredRange3));
 
-console.log(result1);
-console.log(result2);
-console.log(result3);
+console.log("requiredRange1:", result1);
+console.log("requiredRange2:", result2);
+console.log("requiredRange3:", result3);
 
 // Сортировка курсов по цене (в приоритете нижняя граница, затем верхняя граница)
 let sortedCourses = JSON.parse(JSON.stringify(courses));
@@ -40,7 +40,8 @@ sortedCourses.sort((a, b)=>{
     if(a.prices[1] - b.prices[1] === 0) return 0;
 });
 
-console.log(sortedCourses)
+
+console.log("sortedCourses by right border:",sortedCourses)
 
 // потом во возрастанию левой границы
 sortedCourses.sort((a, b)=>{
@@ -51,5 +52,5 @@ sortedCourses.sort((a, b)=>{
     if(a.prices[0] - b.prices[0] === 0) return 0;
 });
 
-console.log(sortedCourses)
+console.log("sortedCourses by left border:", sortedCourses)
 
