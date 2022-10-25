@@ -24,7 +24,7 @@ public:
     int getHeight();
     void initMap(Player * player, IElement ** entities, int sizeEntities);
     void update();
-    CellStatus whatInCell(int x, int y);
+    CellStatus  whatInCell(int x, int y);
     Iterator * createIterator();
     void deleteEntity(int x, int y);
     bool cellChanged(int x, int y);

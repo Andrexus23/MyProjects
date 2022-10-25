@@ -6,11 +6,8 @@ GameController::GameController()
     player = new Player(0, 0);
     entities = nullptr;
     sizeEntities = 0;
-//    addEntity(new Bomb(5, 6));
-//    addEntity(new Coin(3, 4));
-//    addEntity(new Hitpoint(0, 3));
-//    addEntity(new Hitpoint(5, 9));
     generateMaze();
+    generateEntities(3, 3, 3);
 //    map.printMap();
     map.initMap(player, entities, sizeEntities);
 }
@@ -97,44 +94,45 @@ CellStatus GameController::whatInCell(int x, int y)
 
 void GameController::moveUp()
 {
-
-    if((player->getY() > 0) && (map.whatInCell(player->getX(), player->getY() - 1) != WALL)) {
+    if((player->getY() > 0) && (map.whatInCell(player->getX(), player->getY() - 1) != WALL) && player->getDirection() == UP) {
         player->getY()--;
-        playerMoved = true;
     }
-    player->getDirection() = RIGHT;
+    player->getDirection() = UP;
+    playerMoved = true;
 }
 
 void GameController::moveDown()
 {
 //    qDebug() << "moving down";
-    if((player->getY() < map.getHeight() - 1) && (map.whatInCell(player->getX(), player->getY() + 1) != WALL))
+    if((player->getY() < map.getHeight() - 1) && (map.whatInCell(player->getX(), player->getY() + 1) != WALL) && player->getDirection() == DOWN)
     {
         player->getY()++;
-        playerMoved = true;
     };
      player->getDirection() = DOWN;
+     playerMoved = true;
 }
 
 void GameController::moveRight()
 {
-    if((player->getX() < map.getWidth()-1) && (map.whatInCell(player->getX() + 1, player->getY()) != WALL))
+    if((player->getX() < map.getWidth()-1) && (map.whatInCell(player->getX() + 1, player->getY()) != WALL) && player->getDirection() == RIGHT)
     {
         player->getX()++;
-        playerMoved = true;
+
     }
     player->getDirection() = RIGHT;
+    playerMoved = true;
 }
 
 void GameController::moveLeft()
 {
 
-     if((player->getX() > 0) && (map.whatInCell(player->getX() - 1, player->getY()) != WALL))
+     if((player->getX() > 0) && (map.whatInCell(player->getX() - 1, player->getY()) != WALL)&& player->getDirection() == LEFT)
      {
          player->getX()--;
-         playerMoved = true;
+
      }
      player->getDirection() = LEFT;
+     playerMoved = true;
 }
 
 void GameController::update()
@@ -174,10 +172,57 @@ void GameController::generateMaze()
     }
 }
 
-bool GameController::someThingChanged()
+void GameController::checkEntityCollision(int & newX, int & newY)
 {
 
-//    qDebug() << player->getX() << " " << player->getY() << " " << playerMoved;s
+    AGAIN:
+    for(int j = 0; j < sizeEntities; j++){
+
+        if(((entities[j]->getX() == newX)  && (entities[j]->getY() == newY)) || (map.whatInCell(newX, newY) == WALL) || ((newX == player->getX()) && (newY == player->getY()))){
+            while(((entities[j]->getX() == newX)  && (entities[j]->getY() == newY)) || (map.whatInCell(newX, newY) == WALL) || ((newX == player->getX()) && (newY == player->getY()))){
+                newX = rand() % MAPWIDTH;
+                newY = rand() % MAPHEIGHT;
+            }
+            goto AGAIN;
+        }
+    }
+    if(map.whatInCell(newX, newY) == WALL){
+        newX = rand() % MAPWIDTH;
+        newY = rand() % MAPHEIGHT;
+        goto AGAIN;
+    }
+}
+
+void GameController::generateEntities(int nBombs, int nHits, int nCoins)
+{
+    int newX = rand() % MAPWIDTH;
+    int newY = rand() % MAPHEIGHT;
+
+    for(int i = 0; i < nBombs; i++){
+        checkEntityCollision(newX, newY);
+        qDebug() << newX << " " << newY << "Status: " << map.whatInCell(newX, newY);
+        addEntity(new Bomb(newX, newY));
+
+    }
+
+    for(int i = 0; i < nHits; i++){
+        checkEntityCollision(newX, newY);
+        qDebug() << newX << " " << newY << "Status: " << map.whatInCell(newX, newY);
+        addEntity(new Hitpoint(newX, newY));
+
+    }
+
+    for(int i = 0; i < nCoins; i++){
+        checkEntityCollision(newX, newY);
+        qDebug() << newX << " " << newY << "Status: " << map.whatInCell(newX, newY);
+        addEntity(new Coin(newX, newY));
+    }
+
+}
+
+bool GameController::someThingChanged()
+{
+//    qDebug() << player->getX() << " " << player->getY() << " " << playerMoved;
     if(playerMoved){
         playerMoved = false;
         return true;

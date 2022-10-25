@@ -53,7 +53,7 @@ QGraphicsItem * MapView::defineEntities(CellStatus status)
 {
     switch(status){
         case PLAYER:
-            return new PlayerGraphicsItem();
+            return new PlayerGraphicsItem(0, map->player);
             break;
         case EMPTY:
             return  new EmptyGraphicsItem();

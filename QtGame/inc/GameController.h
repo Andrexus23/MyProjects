@@ -25,6 +25,8 @@ public:
     void moveLeft();
     void update();
     void generateMaze();
+    void checkEntityCollision(int & newX, int & newY);
+    void generateEntities(int nBombs, int nHits, int nCoins);
     bool someThingChanged();
     bool cellChanged(int x, int y);
     bool gameOver = false;

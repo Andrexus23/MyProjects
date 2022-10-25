@@ -12,8 +12,8 @@ GameWindow::GameWindow()
     view = new QGraphicsView;
     mapView = new MapView(&map, gameController);
     view->setScene(mapView);
-    view->setFixedSize(VIEWWIDTH, 600);
-    this->setFixedSize(900, 620);
+    view->setFixedSize(1300, 600);
+    this->setFixedSize(1300, 620);
     view->horizontalScrollBar()->setValue(Qt::ScrollBegin);
     view->verticalScrollBar()->setValue(Qt::ScrollBegin);
     view->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
@@ -72,12 +72,10 @@ void GameWindow::update()
     }
 
     if(((gameController->getPlayer()->getX()*CELLSIZE) >= windowWidth - 200) && (gameController->getPlayer()->getDirection() == RIGHT)){
-//        qDebug() << windowWidth << " " << windowWidth;
         c += 200;
         windowWidth += 200;
         view->horizontalScrollBar()->setSliderPosition(c);
     }else if(((gameController->getPlayer()->getX()*CELLSIZE) <= windowWidth - 600) &&  (gameController->getPlayer()->getDirection() == LEFT)){
-//        qDebug() << windowWidth << " " << windowWidth;
         c -= 200;
         windowWidth -= 200;
         view->horizontalScrollBar()->setSliderPosition(c);

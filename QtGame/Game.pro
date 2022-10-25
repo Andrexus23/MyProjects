@@ -37,8 +37,10 @@ SOURCES += \
 HEADERS += \
     inc/GameController.h \
     inc/GameWindow.h \
+    inc/IStrategy.h \
     inc/Iterator.h \
     inc/MapView.h \
+    inc/Strategies/IStrategy.h \
     inc/allclasses.h \
     inc/cell.h \
     inc/entities/Hitpoint.h \

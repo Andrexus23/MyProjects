@@ -175,7 +175,7 @@ void Map::moveTractor(Tractor & tractor)
         tractor.x += direction.first;
         tractor.y += direction.second;
 
-        if(map[tractor.y][tractor.x].getStatus() != EMPTY) {
+        if(map[tractor.y][tractor.x].getStatus() == WALL) {
             map[tractor.y][tractor.x].getStatus() = EMPTY;
             map[tractor.y - direction.second/2][tractor.x - direction.first/2].getStatus() = EMPTY;
             map[tractor.y - direction.second][tractor.x - direction.first].getStatus() = EMPTY;
