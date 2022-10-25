@@ -1,0 +1,13 @@
+#include "../inc/Cell.h"
+
+
+
+void Cell::setStatus(CellStatus status)
+{
+    this->status = status;
+}
+
+CellStatus & Cell::getStatus()
+{
+    return status;
+}
